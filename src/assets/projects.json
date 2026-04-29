@@ -2,7 +2,13 @@
   {
     "title": "MC - Fabcorp",
     "color": "white",
-    "contributors": ["NotBrioche", "Aitaneuh"],
-    "image": "mc.png"
+    "contributors": ["NotBrioche"],
+    "image": "mc-website.png",
+    "url": "https://fabcorp.ch"
+  },
+  {
+    "title": "Codathon",
+    "color": "blue",
+    "contributors": ["NotBrioche", "Aitaneuh"]
   }
 ]

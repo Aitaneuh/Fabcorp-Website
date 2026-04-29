@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const emit = defineEmits(['color'])
+const emit = defineEmits(['color', 'hover'])
 const color = ref('none')
 
 const colors = [
@@ -31,6 +31,7 @@ function setColor(c: string) {
       @click="setColor(c)"
       class="color"
       :class="{ selected: c == color }"
+      @mouseenter="$emit('hover', c)"
     ></div>
   </div>
 </template>
@@ -40,7 +41,9 @@ function setColor(c: string) {
   display: flex;
   flex-direction: row;
   min-height: 160px;
-  padding: 0 10dvw;
+  width: 80%;
+  margin: 0px auto;
+  gap: 0px 8px;
   transform: skew(-25deg);
 }
 

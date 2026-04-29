@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap');
 
-html {
+html,
+body {
+  padding: 0px;
+  margin: 0px;
   font-family: 'Stack Sans Text', 'Courier New', Courier, monospace;
 }
