@@ -48,7 +48,7 @@ function setColor(color: string) {
 }
 
 .color {
-  border: 1px solid black;
+  border-radius: 10px;
   transition: flex-grow 500ms;
   transition-delay: 50ms;
   flex-grow: 1;
