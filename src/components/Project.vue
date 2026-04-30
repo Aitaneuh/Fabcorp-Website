@@ -18,63 +18,154 @@ function visitWebsite(url) {
 </script>
 
 <template>
-  <div v-for="project in filtered" class="project">
-    <h1>{{ project.title }}</h1>
-    <img :src="project.image_url" v-if="project.image_url" />
-    <img src="/images/placeholder.png" v-else />
-    <div class="contributors">
-      <div v-if="project.contributors.length != 1">Contributors:</div>
-      <div v-else>Contributor:</div>
-      <img
-        v-for="contributor in project.contributors"
-        :src="contributor.image_url"
-        :alt="contributor.name"
-        :title="contributor.name"
-      />
+  <div v-for="project in filtered" :key="project.id" class="project-card">
+    <div class="image-container">
+      <img :src="project.image_url || '/images/placeholder.png'" :alt="project.title" />
+      <div class="overlay">
+        <button @click="visitWebsite(project.url)" v-if="project.url" class="visit-btn">
+          Visit Project
+        </button>
+      </div>
     </div>
-    <button @click="visitWebsite(project.url)" v-if="project.url">Visit</button>
+
+    <div class="card-content">
+      <h3 class="project-title">{{ project.title }}</h3>
+
+      <div class="card-footer">
+        <div class="contributors-stack">
+          <img
+            v-for="contributor in project.contributors.slice(0, 4)"
+            :key="contributor.name"
+            :src="contributor.image_url"
+            :alt="contributor.name"
+            :title="contributor.name"
+            class="avatar"
+          />
+          <span v-if="project.contributors.length > 4" class="more-count">
+            +{{ project.contributors.length - 4 }}
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.project {
-  max-width: 60dvw;
-  padding: 1em;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
+.project-card {
+  font-family: 'JetBrains Mono', monospace;
+  width: 350px; /* Fixed width looks better in a grid */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
-.project img {
-  max-height: 30dvh;
-  margin: 0px auto;
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: #ff6d1f;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.project button {
-  max-width: 40%;
-  margin: 1em auto;
-  padding: 5px 20px;
-  border-radius: 8px;
-  border: 0px;
+/* Image Section */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
 }
 
-.contributors {
-  margin: 8px 0px;
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .image-container img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
-  justify-content: start;
-  gap: 0px 7px;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.contributors div {
-  display: inline;
-  padding: 0px 4px;
+.project-card:hover .overlay {
+  opacity: 1;
 }
 
-.contributors img {
-  max-height: 35px;
-  border-radius: 100%;
-  display: inline;
-  margin: 0px;
+.card-content {
+  padding: 1.5rem;
+}
+
+.project-title {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contributors-stack {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #1c1c1c;
+  margin-left: -8px;
+  transition: transform 0.2s ease;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+.avatar:hover {
+  transform: translateY(-4px);
+  z-index: 10;
+}
+
+.more-count {
+  font-size: 0.8rem;
+  color: #888;
+  margin-left: 8px;
+}
+
+.visit-btn {
+  background: #ff6d1f;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .visit-btn {
+  transform: translateY(0);
+}
+
+.visit-btn:hover {
+  background: #e55a10;
+  box-shadow: 0 0 15px rgba(255, 109, 31, 0.4);
 }
 </style>
