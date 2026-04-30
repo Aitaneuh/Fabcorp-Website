@@ -1,9 +1,16 @@
 <script setup>
-import json from '../assets/projects.json'
+import { inject } from 'vue'
 
-const props = defineProps(['color'])
+const res = await fetch('https://n8n.fabcorp.ch/webhook/projects')
 
-const filtered = json.filter((p) => p.color == props.color)
+const projects = await res.json()
+const selectedColor = inject('selectedColor', 'none')
+
+const filtered = projects.filter((project) =>
+  project.colors.find((color) => {
+    return color.color == selectedColor._value
+  }),
+)
 
 function visitWebsite(url) {
   window.open(url)
@@ -11,20 +18,21 @@ function visitWebsite(url) {
 </script>
 
 <template>
-  <div v-for="p in filtered" class="project">
-    <h1>{{ p.title }}</h1>
-    <img :src="'/images/' + p.image" v-if="p.image" />
+  <div v-for="project in filtered" class="project">
+    <h1>{{ project.title }}</h1>
+    <img :src="project.image_url" v-if="project.image_url" />
     <img src="/images/placeholder.png" v-else />
     <div class="contributors">
-      <div>Contributors:</div>
+      <div v-if="project.contributors.length != 1">Contributors:</div>
+      <div v-else>Contributor:</div>
       <img
-        v-for="contributor in p.contributors"
-        :src="'/images/contributors/' + contributor.toLowerCase() + '.jpg'"
-        :alt="contributor"
-        :title="contributor"
+        v-for="contributor in project.contributors"
+        :src="contributor.image_url"
+        :alt="contributor.name"
+        :title="contributor.name"
       />
     </div>
-    <button @click="visitWebsite(p.url)">Visit</button>
+    <button @click="visitWebsite(project.url)" v-if="project.url">Visit</button>
   </div>
 </template>
 

@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import RainbowSelector from './components/RainbowSelector.vue'
-import Project from './components/Project.vue'
+import { ref, provide } from 'vue'
 
-const selected = ref('none')
-const color = ref('none')
-const project = ref(0)
+const key = ref(0)
+const selectedColor = ref('none')
+const activeColor = ref('none')
 
 const names = {
   red: 'Rouge',
@@ -20,29 +18,31 @@ const names = {
   black: 'Noir',
 }
 
-function select(c: string) {
-  selected.value = c
-  color.value = c
-  project.value += 1
+function select(color: string) {
+  selectedColor.value = color
+  activeColor.value = color
+  key.value++
 }
 
-function hover(c: string) {
-  if (selected.value == 'none') {
-    color.value = c
-    project.value += 1
+function hover(color: string) {
+  if (selectedColor.value == 'none') {
+    activeColor.value = color
+    key.value++
   }
 }
 
-const year = new Date().getFullYear()
+provide('selectedColor', activeColor)
 </script>
 
 <template>
   <div class="layout">
     <h1>Fabcorp</h1>
     <RainbowSelector @color="select" @hover="hover" />
-    <h2>Nos projets en : {{ names[color] }}</h2>
+    <h2>Nos projets en : {{ names[activeColor] }}</h2>
     <div class="projects">
-      <Project :color="color" :key="project" />
+      <Suspense>
+        <Project :key="key" />
+      </Suspense>
     </div>
   </div>
 </template>

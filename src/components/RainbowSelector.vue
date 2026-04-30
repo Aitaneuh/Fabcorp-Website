@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const emit = defineEmits(['color', 'hover'])
-const color = ref('none')
+const activeColor = ref('none')
 
 const colors = [
   'red',
@@ -17,21 +17,21 @@ const colors = [
   'black',
 ]
 
-function setColor(c: string) {
-  emit('color', c)
-  color.value = c
+function setColor(color: string) {
+  emit('color', color)
+  activeColor.value = color
 }
 </script>
 
 <template>
   <div class="flex">
     <div
-      v-for="c in colors"
-      :id="c"
-      @click="setColor(c)"
+      v-for="color in colors"
+      :id="color"
+      @click="setColor(color)"
       class="color"
-      :class="{ selected: c == color }"
-      @mouseenter="$emit('hover', c)"
+      :class="{ selected: color == activeColor }"
+      @mouseenter="$emit('hover', color)"
     ></div>
   </div>
 </template>
