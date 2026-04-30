@@ -43,7 +43,7 @@ provide('selectedColor', activeColor)
           CORP
         </h1>
         <hr class="separator" />
-        <p class="quote">"Code is poetry, performance is our passion."</p>
+        <p class="quote">"Ethan c'est le goat (faudra trouver une quote...)"</p>
       </div>
     </div>
     <div class="page">
