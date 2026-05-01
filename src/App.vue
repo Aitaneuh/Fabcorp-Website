@@ -105,7 +105,6 @@ h2 {
 }
 
 .projects {
-  width: 100vw;
   display: grid;
   grid-template-columns: repeat(4, 350px);
   gap: 24px 12px;
