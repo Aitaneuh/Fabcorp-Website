@@ -36,35 +36,89 @@ provide('selectedColor', activeColor)
 
 <template>
   <div class="layout">
-    <h1>Fabcorp</h1>
-    <RainbowSelector @color="select" @hover="hover" />
-    <h2>Nos projets en : {{ names[activeColor] }}</h2>
-    <div class="projects">
-      <Suspense>
-        <Project :key="key" />
-      </Suspense>
+    <div class="hero page">
+      <div class="title-box">
+        <h1>
+          <div class="orange-text">fab</div>
+          corp<nobr />
+        </h1>
+        <hr />
+        <p class="quote">"Because we can code it"</p>
+      </div>
+    </div>
+    <div class="page">
+      <div class="rainbow-select-box">
+        <RainbowSelector @color="select" @hover="hover" />
+        <h2>Nos projets en : {{ names[activeColor] }}</h2>
+        <div class="projects hero">
+          <Suspense>
+            <Project :key="key" />
+          </Suspense>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.page {
+  height: 100vh;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-transform: uppercase;
+  margin: 0px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 10rem;
+  display: flex;
+  justify-content: center;
+  line-height: 0.9em;
+}
+
+hr {
+  border-top: 1px solid white;
+  margin: 1rem 0px 2rem 0px;
+  width: 40rem;
+}
+
+.quote {
+  margin: 0px;
+  font-style: italic;
+}
+
 h2 {
   text-align: center;
   margin-top: 5dvh;
 }
 
-h1 {
-  text-align: center;
-  font-size: 3rem;
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  gap: 24px 12px;
 }
 
-.projects {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 24px 12px;
-  flex-grow: 1;
+.projects div {
+  align-self: center;
+}
+
+.orange-text {
+  color: #ff6d1f;
+}
+
+.rainbow-select-box {
+  padding-top: 5rem;
 }
 </style>
