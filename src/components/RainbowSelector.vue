@@ -24,7 +24,7 @@ function setColor(color: string) {
 </script>
 
 <template>
-  <div class="flex">
+  <div class="colors-row">
     <div
       v-for="color in colors"
       :id="color"
@@ -37,7 +37,7 @@ function setColor(color: string) {
 </template>
 
 <style scoped>
-.flex {
+.colors-row {
   display: flex;
   flex-direction: row;
   min-height: 160px;
@@ -54,9 +54,6 @@ function setColor(color: string) {
   flex-grow: 1;
   display: inline;
   min-height: 10%;
-  /* background-blend-mode: multiply;
-  background-size: 100% 100%;
-  background-image: url('../assets/background.jpg'); */
 }
 
 .selected {

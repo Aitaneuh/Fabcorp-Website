@@ -15,6 +15,8 @@ const filtered = projects.filter((project) =>
 function visitWebsite(url) {
   window.open(url)
 }
+
+const maxContributors = 4
 </script>
 
 <template>
@@ -32,17 +34,19 @@ function visitWebsite(url) {
       <h3 class="project-title">{{ project.title }}</h3>
 
       <div class="card-footer">
+        <p v-if="project.contributors.length != 1">Contributors:</p>
+        <p v-else>Contributor:</p>
         <div class="contributors-stack">
           <img
-            v-for="contributor in project.contributors.slice(0, 4)"
+            v-for="contributor in project.contributors.slice(0, maxContributors)"
             :key="contributor.name"
             :src="contributor.image_url"
             :alt="contributor.name"
             :title="contributor.name"
             class="avatar"
           />
-          <span v-if="project.contributors.length > 4" class="more-count">
-            +{{ project.contributors.length - 4 }}
+          <span v-if="project.contributors.length > maxContributors" class="more-count">
+            +{{ project.contributors.length - maxContributors }}
           </span>
         </div>
       </div>
@@ -52,10 +56,8 @@ function visitWebsite(url) {
 
 <style scoped>
 .project-card {
-  font-family: 'JetBrains Mono', monospace;
-  width: 350px; /* Fixed width looks better in a grid */
+  width: 350px;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -64,14 +66,11 @@ function visitWebsite(url) {
 
 .project-card:hover {
   transform: translateY(-8px);
-  border-color: #ff6d1f;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Image Section */
 .image-container {
   position: relative;
-  width: 100%;
   height: 200px;
   overflow: hidden;
 }
@@ -84,12 +83,12 @@ function visitWebsite(url) {
 }
 
 .project-card:hover .image-container img {
-  transform: scale(1.05);
+  transform: scale(1.15);
 }
 
 .overlay {
   position: absolute;
-  inset: 0;
+  inset: 0px;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
@@ -110,7 +109,8 @@ function visitWebsite(url) {
   color: #fff;
   font-size: 1.25rem;
   font-weight: 700;
-  margin: 0 0 1rem 0;
+  margin: 0px;
+  margin-bottom: 1rem;
 }
 
 .card-footer {
@@ -134,12 +134,12 @@ function visitWebsite(url) {
 }
 
 .avatar:first-child {
-  margin-left: 0;
+  margin-left: 0px;
 }
 
 .avatar:hover {
   transform: translateY(-4px);
-  z-index: 10;
+  z-index: 1;
 }
 
 .more-count {
@@ -150,7 +150,7 @@ function visitWebsite(url) {
 
 .visit-btn {
   background: #ff6d1f;
-  color: white;
+  color: #ffffff;
   border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
