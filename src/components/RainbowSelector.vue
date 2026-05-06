@@ -25,14 +25,8 @@ function setColor(color: string) {
 
 <template>
   <div class="colors-row">
-    <div
-      v-for="color in colors"
-      :id="color"
-      @click="setColor(color)"
-      class="color"
-      :class="{ selected: color == activeColor }"
-      @mouseenter="$emit('hover', color)"
-    ></div>
+    <div v-for="color in colors" :id="color" @click="setColor(color)" class="color"
+      :class="{ selected: color == activeColor }" @mouseenter="$emit('hover', color)"></div>
   </div>
 </template>
 
@@ -59,6 +53,7 @@ function setColor(color: string) {
 .selected {
   flex-grow: 1.5;
 }
+
 .color:hover {
   flex-grow: 3;
   color: white;
