@@ -9,6 +9,7 @@
         <ul class="nav-links">
             <li><router-link to="/">Home</router-link></li>
             <li><router-link to="/about">About</router-link></li>
+            <li><router-link to="/team">Team</router-link></li>
         </ul>
         <div class="nav-right-placeholder"></div>
     </nav>
