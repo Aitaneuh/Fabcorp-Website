@@ -1,0 +1,34 @@
+name: Fabcorp Website Forgejo Sync
+on:
+    schedule:
+        - cron: '0 */6 * * *'
+    workflow_dispatch:
+
+jobs:
+    sync:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout GitHub Repo
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Sync from Forgejo
+              run: |
+                  # 1. Add Forgejo as a remote
+                  git remote add forgejo https://git.fabcorp.ch/Fabcorp/Fabcorp-Website.git
+
+                  # 2. Fetch all branches from Forgejo
+                  git fetch forgejo
+
+                  # 3. Merge the specific branch you want (usually main or master)
+                  # This keeps your .github/workflows folder intact on the GitHub side
+                  git config user.name "Github Actions"
+                  git config user.email "actions@github.com"
+
+                  # Merge Forgejo's main into your GitHub main
+                  # 'allow-unrelated-histories' is used for the very first sync
+                  git merge forgejo/main --allow-unrelated-histories -m "Sync from Forgejo"
+
+                  # 4. Push back to GitHub
+                  git push origin main
