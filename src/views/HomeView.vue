@@ -5,7 +5,7 @@ const key = ref(0)
 const selectedColor = ref('none')
 const activeColor = ref('none')
 
-const names = {
+const names: { [key: string]: string } = {
   red: 'Red',
   orange: 'Orange',
   yellow: 'Yellow',
