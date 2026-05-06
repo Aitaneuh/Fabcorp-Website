@@ -37,14 +37,8 @@ const maxContributors = 4
         <p v-if="project.contributors.length != 1">Contributors:</p>
         <p v-else>Contributor:</p>
         <div class="contributors-stack">
-          <img
-            v-for="contributor in project.contributors.slice(0, maxContributors)"
-            :key="contributor.name"
-            :src="contributor.image_url"
-            :alt="contributor.name"
-            :title="contributor.name"
-            class="avatar"
-          />
+          <img v-for="contributor in project.contributors.slice(0, maxContributors)" :key="contributor.name"
+            :src="contributor.image_url" :alt="contributor.name" :title="contributor.name" class="avatar" />
           <span v-if="project.contributors.length > maxContributors" class="more-count">
             +{{ project.contributors.length - maxContributors }}
           </span>
