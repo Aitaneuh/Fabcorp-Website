@@ -1,34 +1,37 @@
 name: Fabcorp Website Forgejo Sync
 on:
-    schedule:
-        - cron: '0 */6 * * *'
-    workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-    sync:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout GitHub Repo
-              uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GitHub Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-            - name: Sync from Forgejo
-              run: |
-                  # 1. Add Forgejo as a remote
-                  git remote add forgejo https://git.fabcorp.ch/Fabcorp/Fabcorp-Website.git
+      - name: Sync from Forgejo
+        run: |
+          # Configure Git Identity
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-                  # 2. Fetch all branches from Forgejo
-                  git fetch forgejo
+          # Add Forgejo Remote (Using a secret for auth if private)
+          # If public, you can keep the original URL
+          git remote add forgejo https://git.fabcorp.ch/Fabcorp/Fabcorp-Website.git
 
-                  # 3. Merge the specific branch you want (usually main or master)
-                  # This keeps your .github/workflows folder intact on the GitHub side
-                  git config user.name "Github Actions"
-                  git config user.email "actions@github.com"
+          # Fetch and Merge
+          git fetch forgejo
+          
+          # Use --strategy-option theirs if you want Forgejo to always overwrite conflicts
+          git merge forgejo/main --allow-unrelated-histories -m "Sync from Forgejo"
 
-                  # Merge Forgejo's main into your GitHub main
-                  # 'allow-unrelated-histories' is used for the very first sync
-                  git merge forgejo/main --allow-unrelated-histories -m "Sync from Forgejo"
-
-                  # 4. Push back to GitHub
-                  git push origin main
+          # Push changes back to GitHub
+          git push origin main
