@@ -6,16 +6,16 @@ const selectedColor = ref('none')
 const activeColor = ref('none')
 
 const names = {
-  red: 'Rouge',
+  red: 'Red',
   orange: 'Orange',
-  yellow: 'Jaune',
-  green: 'Vert',
+  yellow: 'Yellow',
+  green: 'Green',
   cyan: 'Cyan',
-  blue: 'Bleu',
+  blue: 'Blue',
   pink: 'Rose',
   violet: 'Violet',
-  white: 'Blanc',
-  black: 'Noir',
+  white: 'White',
+  black: 'Black',
 }
 
 function select(color: string) {
@@ -49,7 +49,7 @@ provide('selectedColor', activeColor)
     <div class="page">
       <div class="rainbow-select-box">
         <RainbowSelector @color="select" @hover="hover" />
-        <h2>Nos projets en : {{ names[activeColor] }}</h2>
+        <h2>Our project in : {{ names[activeColor] }}</h2>
         <div class="projects hero">
           <Suspense>
             <Project :key="key" />
@@ -58,6 +58,7 @@ provide('selectedColor', activeColor)
       </div>
     </div>
   </div>
+  <router-view />
 </template>
 
 <style scoped>
