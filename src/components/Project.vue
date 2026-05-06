@@ -15,7 +15,7 @@ const filtered = computed(() => {
 
 <template>
   <div class="projects-grid">
-    <ProjectCard v-for="project in filtered" :key="project.id" :project="project" />
+    <ProjectCard v-for="project in filtered" :key="project.id" :project="project" :color="selectedColor" />
   </div>
 </template>
 

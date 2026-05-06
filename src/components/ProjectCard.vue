@@ -1,9 +1,29 @@
 <script setup>
-defineProps({
+import { computed } from 'vue'
+
+const props = defineProps({
     project: {
         type: Object,
         required: true
+    },
+    color: {
+        type: String,
+        required: true
     }
+})
+
+const bgColor = computed(() => props.color)
+
+const textColor = computed(() => {
+    const currentBg = bgColor.value.toLowerCase();
+
+    const darkColors = ['pink', 'orange', 'red', 'black', 'blue', 'green', 'purple', 'navy'];
+    if (darkColors.includes(currentBg)) return 'white';
+
+    const lightColors = ['white', 'yellow', 'lime', 'cyan'];
+    if (lightColors.includes(currentBg)) return 'black';
+
+    return currentBg === 'white' ? 'black' : 'white';
 })
 
 const maxContributors = 4
@@ -136,8 +156,8 @@ function visitWebsite(url) {
 }
 
 .visit-btn {
-    background: #ff6d1f;
-    color: #ffffff;
+    background: v-bind(bgColor);
+    color: v-bind(textColor);
     border: none;
     padding: 0.6rem 1.2rem;
     border-radius: 6px;
@@ -152,7 +172,7 @@ function visitWebsite(url) {
 }
 
 .visit-btn:hover {
-    background: #e55a10;
-    box-shadow: 0 0 15px rgba(255, 109, 31, 0.4);
+    background: v-bind(bgColor);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 </style>

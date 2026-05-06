@@ -41,7 +41,6 @@ provide('selectedColor', activeColor)
                 <h1>
                     <div class="orange-text">fab</div>
                     corp
-                    <nobr />
                 </h1>
                 <hr />
                 <p class="quote">"Because we can code it"</p>
