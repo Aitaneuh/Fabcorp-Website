@@ -25,7 +25,7 @@ import TeamMember from '../components/TeamMember.vue'
                 name="Aitaneuh"
                 role="Co-Founder"
                 bio='"Lazy genius", will sleep most of the time but will then eat chocolate and be more productive than an entire team.'
-                image="https://git.fabcorp.ch/avatars/fff343f07e5eed4da52ebf0065c19c479a46deb885b0ba48ed1e75bd9644fde1"
+                image="https://git.fabcorp.ch/avatars/b34b6213df7d1e6e19a55bed2b4cf88b3053f9672f5c6e3b9fa58690c32ad6eb"
                 :avatarLeft="false"
             />
         </section>
