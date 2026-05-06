@@ -50,7 +50,7 @@ provide('selectedColor', activeColor)
         <div class="page">
             <div class="rainbow-select-box">
                 <RainbowSelector @color="select" @hover="hover" />
-                <h2>Our project in : {{ names[activeColor] }}</h2>
+                <h2>Our projects in : {{ names[activeColor] }}</h2>
                 <div class="projects hero">
                     <Suspense>
                         <Project :key="key" />
