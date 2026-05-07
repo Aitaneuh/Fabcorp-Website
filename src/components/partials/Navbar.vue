@@ -74,7 +74,7 @@
 }
 
 .router-link-active {
-    border-bottom: 2px solid #ff6d1f;
+    border-bottom: 2px solid var(--accent-color);
 }
 
 .fabcorp-text {
