@@ -4,26 +4,26 @@ import { computed } from 'vue'
 const props = defineProps({
     project: {
         type: Object,
-        required: true
+        required: true,
     },
     color: {
         type: String,
-        required: true
-    }
+        required: true,
+    },
 })
 
 const bgColor = computed(() => props.color)
 
 const textColor = computed(() => {
-    const currentBg = bgColor.value.toLowerCase();
+    const currentBg = bgColor.value.toLowerCase()
 
-    const darkColors = ['pink', 'orange', 'red', 'black', 'blue', 'green', 'purple', 'navy'];
-    if (darkColors.includes(currentBg)) return 'white';
+    const darkColors = ['pink', 'orange', 'red', 'black', 'blue', 'green', 'purple', 'navy']
+    if (darkColors.includes(currentBg)) return 'white'
 
-    const lightColors = ['white', 'yellow', 'lime', 'cyan'];
-    if (lightColors.includes(currentBg)) return 'black';
+    const lightColors = ['white', 'yellow', 'lime', 'cyan']
+    if (lightColors.includes(currentBg)) return 'black'
 
-    return currentBg === 'white' ? 'black' : 'white';
+    return currentBg === 'white' ? 'black' : 'white'
 })
 
 const maxContributors = 4
@@ -50,8 +50,14 @@ function visitWebsite(url) {
             <div class="card-footer">
                 <p>{{ project.contributors.length !== 1 ? 'Contributors:' : 'Contributor:' }}</p>
                 <div class="contributors-stack">
-                    <img v-for="contributor in project.contributors.slice(0, maxContributors)" :key="contributor.name"
-                        :src="contributor.image_url" :alt="contributor.name" :title="contributor.name" class="avatar" />
+                    <img
+                        v-for="contributor in project.contributors.slice(0, maxContributors)"
+                        :key="contributor.name"
+                        :src="contributor.image_url"
+                        :alt="contributor.name"
+                        :title="contributor.name"
+                        class="avatar"
+                    />
                     <span v-if="project.contributors.length > maxContributors" class="more-count">
                         +{{ project.contributors.length - maxContributors }}
                     </span>

@@ -6,9 +6,9 @@ defineProps({
     image: String,
     avatarLeft: {
         type: Boolean,
-        default: true
-    }
-});
+        default: true,
+    },
+})
 </script>
 
 <template>
@@ -100,7 +100,6 @@ p {
 }
 
 @media (max-width: 900px) {
-
     .member-card,
     .row-reverse {
         flex-direction: column;

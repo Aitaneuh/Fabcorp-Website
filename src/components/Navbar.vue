@@ -2,7 +2,12 @@
     <nav class="navbar">
         <div class="logo">
             <router-link to="/" class="logo-link">
-                <img src="/images/fabcorp_logo_small_white.png" alt="Fabcorp logo" width="30" height="30">
+                <img
+                    src="/images/fabcorp_logo_small_white.png"
+                    alt="Fabcorp logo"
+                    width="30"
+                    height="30"
+                />
                 <span class="fabcorp-text">Fabcorp</span>
             </router-link>
         </div>
@@ -15,8 +20,7 @@
     </nav>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped>
 .navbar {

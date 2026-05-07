@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
     <div class="about-container">
@@ -7,8 +6,8 @@
             <img src="/images/fabcorp_logo_small_white.png" alt="Fabcorp Logo" class="about-logo" />
             <h1>Elevating Code to <span class="accent">Art</span></h1>
             <p class="hero-subtitle">
-                Fabcorp is a boutique technical collective specializing in high-performance digital solutions.
-                When dedication meets talent, we build the future.
+                Fabcorp is a boutique technical collective specializing in high-performance digital
+                solutions. When dedication meets talent, we build the future.
             </p>
         </section>
 
@@ -16,9 +15,9 @@
             <div class="grid-item main">
                 <h2>Our Mission</h2>
                 <p>
-                    Founded on the principle of technical excellence, Fabcorp bridges the gap between
-                    complex engineering and intuitive user experience. We don't just write scripts;
-                    we architect systems that scale.
+                    Founded on the principle of technical excellence, Fabcorp bridges the gap
+                    between complex engineering and intuitive user experience. We don't just write
+                    scripts; we architect systems that scale.
                 </p>
             </div>
 
@@ -165,7 +164,9 @@ h1 {
     text-decoration: none;
     border-radius: 8px;
     font-weight: bold;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
 }
 
 .cta-button:hover {
