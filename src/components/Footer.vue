@@ -1,14 +1,14 @@
 <script setup>
-import { computed } from 'vue';
+import { computed } from 'vue'
 
-const currentYear = computed(() => new Date().getFullYear());
+const currentYear = computed(() => new Date().getFullYear())
 </script>
 <template>
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h3 class="brand-name">Fabcorp</h3>
-                <p>When dedication meets talent.</p>
+                <p>When dedication meets skill.</p>
             </div>
 
             <div class="footer-section">
@@ -16,13 +16,16 @@ const currentYear = computed(() => new Date().getFullYear());
                 <ul>
                     <li><router-link to="/">Home</router-link></li>
                     <li><router-link to="/about">About</router-link></li>
+                    <li><router-link to="/team">Team</router-link></li>
                 </ul>
             </div>
 
             <div class="footer-section">
                 <h4>Connect</h4>
                 <div class="social-links">
-                    <a href="https://git.fabcorp.ch/Fabcorp" target="_blank" aria-label="Git">Git</a>
+                    <a href="https://git.fabcorp.ch/Fabcorp" target="_blank" aria-label="Git"
+                        >Git</a
+                    >
                 </div>
             </div>
         </div>
@@ -32,7 +35,6 @@ const currentYear = computed(() => new Date().getFullYear());
         </div>
     </footer>
 </template>
-
 
 <style scoped>
 .footer {
