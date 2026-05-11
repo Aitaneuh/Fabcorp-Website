@@ -19,7 +19,6 @@ defineProps({
         </div>
 
         <div class="member-info">
-            <span class="role-tag accent">{{ role }}</span>
             <h2>{{ name }}</h2>
             <p>{{ bio }}</p>
             <div class="social-mini">
