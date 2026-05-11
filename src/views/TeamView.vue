@@ -30,8 +30,8 @@ const contributors = computed(() => {
         <header class="hero">
             <h1>The Brains Behind <span class="accent">Fabcorp</span></h1>
             <p>
-                Two developers, one vision. We combined our obsession for clean code to build a
-                studio that prioritizes quality over quantity.
+                Seems like in here + and + make - because they both are confident but still manage
+                to produce catastrophic projects...
             </p>
         </header>
 
