@@ -38,7 +38,7 @@ function visitWebsite(url) {
         <div class="image-container">
             <img :src="project.image_url || '/images/placeholder.png'" :alt="project.title" />
             <div class="overlay">
-                <button @click="visitWebsite(project.url)" v-if="project.url" class="visit-btn">
+                <button @click="visitWebsite(project.url)" v-if="project.url" class="button">
                     Visit Project
                 </button>
             </div>
@@ -161,24 +161,8 @@ function visitWebsite(url) {
     margin-left: 8px;
 }
 
-.visit-btn {
+.button {
     background: v-bind(bgColor);
     color: v-bind(textColor);
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-}
-
-.project-card:hover .visit-btn {
-    transform: translateY(0);
-}
-
-.visit-btn:hover {
-    background: v-bind(bgColor);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 </style>

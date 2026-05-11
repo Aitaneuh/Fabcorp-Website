@@ -9,7 +9,7 @@ import Footer from './components/partials/Footer.vue'
 import TeamMember from './components/TeamMember.vue'
 import ProjectCard from './components/ProjectCard.vue'
 
-const Project = defineAsyncComponent(() => import('./components/Project.vue'))
+const Project = defineAsyncComponent(() => import('./components/Projects.vue'))
 
 const app = createApp(App)
 

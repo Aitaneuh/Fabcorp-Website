@@ -37,11 +37,7 @@ const currentYear = computed(() => new Date().getFullYear())
 </template>
 
 <style scoped>
-.footer {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    padding: 3rem 1rem 1rem;
-}
+
 
 .footer-content {
     max-width: 1100px;

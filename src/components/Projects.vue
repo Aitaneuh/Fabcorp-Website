@@ -1,7 +1,7 @@
 <script setup>
 import { inject, computed } from 'vue'
 
-const res = await fetch('https://n8n.fabcorp.ch/webhook/projects')
+const res = await fetch('https://api.fabcorp.ch/webhook/projects')
 const projects = await res.json()
 const selectedColor = inject('selectedColor', 'none')
 

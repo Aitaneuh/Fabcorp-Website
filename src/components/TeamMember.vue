@@ -12,25 +12,35 @@ defineProps({
 </script>
 
 <template>
-    <div class="member-card" :class="{ 'row-reverse': !avatarLeft }">
+    <section :class="{ reverse: !avatarLeft }">
         <div class="member-image">
             <img :src="image" :alt="name" />
-            <div class="image-accent"></div>
+            <div class="image-accent background-accent"></div>
         </div>
 
         <div class="member-info">
-            <span class="role-tag">{{ role }}</span>
+            <span class="role-tag accent">{{ role }}</span>
             <h2>{{ name }}</h2>
             <p>{{ bio }}</p>
             <div class="social-mini">
                 <!-- Add small social icons or links here if needed -->
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <style scoped>
-.member-card {
+h2 {
+    font-size: 2.5rem;
+    margin: 0.5rem 0 1.5rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+section {
     display: flex;
     align-items: center;
     gap: 4rem;
@@ -38,7 +48,7 @@ defineProps({
     width: 100%;
 }
 
-.row-reverse {
+.reverse {
     flex-direction: row-reverse;
 }
 
@@ -50,22 +60,19 @@ defineProps({
 
 .member-image img {
     width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
+    /* object-fit: cover; */
     border-radius: 20px;
     position: relative;
     z-index: 2;
-    filter: grayscale(20%);
     border: 1px solid #333;
 }
 
-.image-accent {
+.member-image div {
     position: absolute;
     top: 20px;
     left: -20px;
     width: 100%;
     height: 100%;
-    background-color: #ff6d1f;
     border-radius: 20px;
     z-index: 1;
     opacity: 0.2;
@@ -80,23 +87,10 @@ defineProps({
 }
 
 .role-tag {
-    color: #ff6d1f;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
     font-size: 0.8rem;
-}
-
-h2 {
-    font-size: 2.5rem;
-    margin: 0.5rem 0 1.5rem;
-    color: #fff;
-}
-
-p {
-    font-size: 1.1rem;
-    color: #bbb;
-    line-height: 1.8;
 }
 
 @media (max-width: 900px) {

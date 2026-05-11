@@ -1,8 +1,6 @@
-<script setup></script>
-
 <template>
-    <div class="team-page">
-        <header class="team-header">
+    <div class="page">
+        <header class="hero">
             <h1>The Brains Behind <span class="accent">Fabcorp</span></h1>
             <p>
                 Two developers, one vision. We combined our obsession for clean code to build a
@@ -10,8 +8,7 @@
             </p>
         </header>
 
-        <!-- Team List -->
-        <section class="team-list">
+        <section>
             <TeamMember
                 name="Lead Developer One"
                 role="System Architect"
@@ -32,34 +29,19 @@
 </template>
 
 <style scoped>
-.team-page {
-    color: #fff;
-    min-height: 100vh;
-    padding-top: 80px;
-}
-
-.team-header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 100px;
-    padding: 60px 20px;
-}
-
 h1 {
     font-size: 3rem;
     margin-bottom: 1.5rem;
 }
 
-.accent {
-    color: #ff6d1f;
+header p {
+    font-size: 1.25rem;
+    color: #bbb;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-.team-header p {
-    font-size: 1.2rem;
-    color: #888;
-}
-
-.team-list {
+section {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px 100px;

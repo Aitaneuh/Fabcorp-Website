@@ -8,10 +8,10 @@
                     width="30"
                     height="30"
                 />
-                <span class="fabcorp-text">Fabcorp</span>
+                <span>Fabcorp</span>
             </router-link>
         </div>
-        <ul class="nav-links">
+        <ul>
             <li><router-link to="/">Home</router-link></li>
             <li><router-link to="/about">About</router-link></li>
             <li><router-link to="/team">Team</router-link></li>
@@ -23,28 +23,22 @@
 <script setup></script>
 
 <style scoped>
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #111111;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.nav-links {
+ul {
     display: flex;
     list-style: none;
     gap: 50px;
     margin: 0 auto;
 }
 
-.nav-links a {
-    color: white;
+ul a {
+    color: var(--text-color);
     text-decoration: none;
+}
+
+span {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .logo {
@@ -75,11 +69,5 @@
 
 .router-link-active {
     border-bottom: 2px solid var(--accent-color);
-}
-
-.fabcorp-text {
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 </style>
