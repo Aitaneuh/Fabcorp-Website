@@ -1,4 +1,6 @@
 <script setup>
+import Icon from './Icon.vue'
+
 defineProps({
     name: String,
     role: String,
@@ -8,6 +10,7 @@ defineProps({
         type: Boolean,
         default: true,
     },
+    links: Array,
 })
 </script>
 
@@ -22,7 +25,7 @@ defineProps({
             <h2>{{ name }}</h2>
             <p>{{ bio }}</p>
             <div class="social-mini">
-                <!-- Add small social icons or links here if needed -->
+                <Icon v-for="link in links" :url="link" />
             </div>
         </div>
     </section>
@@ -90,6 +93,12 @@ section {
     font-weight: bold;
     letter-spacing: 2px;
     font-size: 0.8rem;
+}
+
+.social-mini {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 @media (max-width: 900px) {

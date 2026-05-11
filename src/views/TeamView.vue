@@ -43,6 +43,7 @@ const contributors = computed(() => {
                 :bio="contributor.bio"
                 :image="contributor.image_url"
                 :avatarLeft="contributor.avatarLeft"
+                :links="contributor.links"
             />
         </section>
 
