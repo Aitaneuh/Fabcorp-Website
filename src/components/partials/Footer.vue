@@ -7,7 +7,7 @@ const currentYear = computed(() => new Date().getFullYear())
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h3 class="brand-name">Fabcorp</h3>
+                <h3 class="brand-name accent">Fabcorp</h3>
                 <p>When dedication meets skill.</p>
             </div>
 
@@ -37,11 +37,7 @@ const currentYear = computed(() => new Date().getFullYear())
 </template>
 
 <style scoped>
-.footer {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    padding: 3rem 1rem 1rem;
-}
+
 
 .footer-content {
     max-width: 1100px;
@@ -53,7 +49,6 @@ const currentYear = computed(() => new Date().getFullYear())
 
 .footer-section h3 {
     margin-bottom: 1rem;
-    color: #ff6d1f;
 }
 
 .footer-section h4 {

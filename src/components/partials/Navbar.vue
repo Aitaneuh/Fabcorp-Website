@@ -2,11 +2,16 @@
     <nav class="navbar">
         <div class="logo">
             <router-link to="/" class="logo-link">
-                <img src="/images/fabcorp_logo_small_white.png" alt="Fabcorp logo" width="30" height="30">
-                <span class="fabcorp-text">Fabcorp</span>
+                <img
+                    src="/images/fabcorp_logo_small_white.png"
+                    alt="Fabcorp logo"
+                    width="30"
+                    height="30"
+                />
+                <span>Fabcorp</span>
             </router-link>
         </div>
-        <ul class="nav-links">
+        <ul>
             <li><router-link to="/">Home</router-link></li>
             <li><router-link to="/about">About</router-link></li>
             <li><router-link to="/team">Team</router-link></li>
@@ -15,32 +20,25 @@
     </nav>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped>
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #111111;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.nav-links {
+ul {
     display: flex;
     list-style: none;
     gap: 50px;
     margin: 0 auto;
 }
 
-.nav-links a {
-    color: white;
+ul a {
+    color: var(--text-color);
     text-decoration: none;
+}
+
+span {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .logo {
@@ -70,12 +68,6 @@
 }
 
 .router-link-active {
-    border-bottom: 2px solid #ff6d1f;
-}
-
-.fabcorp-text {
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    border-bottom: 2px solid var(--accent-color);
 }
 </style>
