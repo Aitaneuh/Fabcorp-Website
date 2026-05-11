@@ -45,10 +45,10 @@ function visitWebsite(url) {
         </div>
 
         <div class="card-content">
-            <h3 class="project-title">{{ project.title }}</h3>
+            <h3>{{ project.title }}</h3>
 
             <div class="card-footer">
-                <p>{{ project.contributors.length !== 1 ? 'Contributors:' : 'Contributor:' }}</p>
+                <p>Contributor{{ project.contributors.length != 1 ? 's' : '' }}:</p>
                 <div class="contributors-stack">
                     <img
                         v-for="contributor in project.contributors.slice(0, maxContributors)"
@@ -118,7 +118,8 @@ function visitWebsite(url) {
     padding: 1.5rem;
 }
 
-.project-title {
+h3 {
+    text-align: start;
     color: #fff;
     font-size: 1.25rem;
     font-weight: 700;
@@ -137,7 +138,7 @@ function visitWebsite(url) {
     align-items: center;
 }
 
-.avatar {
+.card-footer img {
     width: 32px;
     height: 32px;
     border-radius: 50%;
