@@ -1,10 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
+:root {
+    --text-color: #ffffff;
+    --accent-color: #ff6d1f; /* global scope */
+    --accent-hover-color: #e55a10;
+}
+
 html,
 body {
-  padding: 0px;
-  margin: 0px;
-  font-family: 'Jetbrains Mono', 'Courier New', Courier, monospace;
-  background: #222222;
-  color: #ffffff;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Jetbrains Mono', 'Courier New', Courier, monospace;
+    background: #222222;
+    color: var(--text-color);
+}
+
+.button {
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.button:hover {
+    transform: translateY(0);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 100px;
+    padding: 60px 20px;
+}
+
+.accent {
+    color: var(--accent-color);
+}
+
+.background-accent {
+    background-color: var(--accent-color);
+}
+
+.page {
+    min-height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1a1a1a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.footer {
+    background-color: #1a1a1a;
+    padding: 3rem 1rem 1rem;
 }
