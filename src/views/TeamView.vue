@@ -1,29 +1,54 @@
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+
+const contributorsData = ref([])
+const isLoading = ref(true)
+
+onMounted(async () => {
+    try {
+        const res = await fetch('https://api.fabcorp.ch/webhook/contributors')
+        const data = await res.json()
+
+        contributorsData.value = data.map((contributor) => ({
+            ...contributor,
+            avatarLeft: contributor.id % 2 !== 0,
+        }))
+    } catch (error) {
+        console.error('Failed to fetch contributors:', error)
+    } finally {
+        isLoading.value = false
+    }
+})
+
+const contributors = computed(() => {
+    return [...contributorsData.value].sort((a, b) => a.id - b.id)
+})
+</script>
+
 <template>
     <div class="page">
         <header class="hero">
             <h1>The Brains Behind <span class="accent">Fabcorp</span></h1>
             <p>
-                Two developers, one vision. We combined our obsession for clean code to build a
-                studio that prioritizes quality over quantity.
+                Seems like in here + and + make - because they both are confident but still manage
+                to produce catastrophic projects...
             </p>
         </header>
 
-        <section>
+        <section v-if="!isLoading">
             <TeamMember
-                name="Lead Developer One"
-                role="System Architect"
-                bio="With over 10 years of experience in backend infrastructure, [Name] ensures that every Fabcorp project is built on a foundation of iron-clad logic and scalable code."
-                image="https://git.fabcorp.ch/avatars/571124f6d29c7c5747ac1a5720f3bcc3253a7d8830bbd39c34f56f32f3782634"
-                :avatarLeft="true"
+                v-for="contributor in contributors"
+                :key="contributor.id"
+                :name="contributor.name"
+                :bio="contributor.bio"
+                :image="contributor.image_url"
+                :avatarLeft="contributor.avatarLeft"
+                :links="contributor.links"
             />
+        </section>
 
-            <TeamMember
-                name="Lead Developer Two"
-                role="Frontend Specialist"
-                bio="A master of user experience and modern frameworks. [Name] turns complex data into beautiful, interactive interfaces that feel as good as they look."
-                image="https://git.fabcorp.ch/avatars/fff343f07e5eed4da52ebf0065c19c479a46deb885b0ba48ed1e75bd9644fde1"
-                :avatarLeft="false"
-            />
+        <section v-else>
+            <p>Loading the team...</p>
         </section>
     </div>
 </template>
