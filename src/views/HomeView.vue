@@ -12,7 +12,7 @@ const names: { [key: string]: string } = {
     green: 'Green',
     cyan: 'Cyan',
     blue: 'Blue',
-    pink: 'Rose',
+    pink: 'Pink',
     violet: 'Violet',
     white: 'White',
     black: 'Black',
@@ -39,7 +39,7 @@ provide('selectedColor', activeColor)
         <div class="hero page">
             <div class="title-box">
                 <h1>
-                    <div class="orange-text">fab</div>
+                    <div class="accent">fab</div>
                     corp<nobr />
                 </h1>
                 <hr />
@@ -62,22 +62,6 @@ provide('selectedColor', activeColor)
 </template>
 
 <style scoped>
-.page {
-    height: 100vh;
-}
-
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.title-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 h1 {
     text-transform: uppercase;
     margin: 0px;
@@ -89,20 +73,26 @@ h1 {
     line-height: 0.9em;
 }
 
+h2 {
+    text-align: center;
+    margin-top: 5dvh;
+}
+
 hr {
     border-top: 1px solid white;
     margin: 1rem 0px 2rem 0px;
     width: 40rem;
 }
 
+.title-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .quote {
     margin: 0px;
     font-style: italic;
-}
-
-h2 {
-    text-align: center;
-    margin-top: 5dvh;
 }
 
 .projects {
@@ -115,10 +105,7 @@ h2 {
     align-self: center;
 }
 
-.orange-text {
-    color: #ff6d1f;
-}
-
+/* Depercated with addition of header and footer */
 .rainbow-select-box {
     padding-top: 5rem;
 }

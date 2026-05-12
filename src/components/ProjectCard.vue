@@ -4,26 +4,26 @@ import { computed } from 'vue'
 const props = defineProps({
     project: {
         type: Object,
-        required: true
+        required: true,
     },
     color: {
         type: String,
-        required: true
-    }
+        required: true,
+    },
 })
 
 const bgColor = computed(() => props.color)
 
 const textColor = computed(() => {
-    const currentBg = bgColor.value.toLowerCase();
+    const currentBg = bgColor.value.toLowerCase()
 
-    const darkColors = ['pink', 'orange', 'red', 'black', 'blue', 'green', 'purple', 'navy'];
-    if (darkColors.includes(currentBg)) return 'white';
+    const darkColors = ['pink', 'orange', 'red', 'black', 'blue', 'green', 'purple', 'navy']
+    if (darkColors.includes(currentBg)) return 'white'
 
-    const lightColors = ['white', 'yellow', 'lime', 'cyan'];
-    if (lightColors.includes(currentBg)) return 'black';
+    const lightColors = ['white', 'yellow', 'lime', 'cyan']
+    if (lightColors.includes(currentBg)) return 'black'
 
-    return currentBg === 'white' ? 'black' : 'white';
+    return currentBg === 'white' ? 'black' : 'white'
 })
 
 const maxContributors = 4
@@ -38,20 +38,26 @@ function visitWebsite(url) {
         <div class="image-container">
             <img :src="project.image_url || '/images/placeholder.png'" :alt="project.title" />
             <div class="overlay">
-                <button @click="visitWebsite(project.url)" v-if="project.url" class="visit-btn">
+                <button @click="visitWebsite(project.url)" v-if="project.url" class="button">
                     Visit Project
                 </button>
             </div>
         </div>
 
         <div class="card-content">
-            <h3 class="project-title">{{ project.title }}</h3>
+            <h3>{{ project.title }}</h3>
 
             <div class="card-footer">
-                <p>{{ project.contributors.length !== 1 ? 'Contributors:' : 'Contributor:' }}</p>
+                <p>Contributor{{ project.contributors.length != 1 ? 's' : '' }}:</p>
                 <div class="contributors-stack">
-                    <img v-for="contributor in project.contributors.slice(0, maxContributors)" :key="contributor.name"
-                        :src="contributor.image_url" :alt="contributor.name" :title="contributor.name" class="avatar" />
+                    <img
+                        v-for="contributor in project.contributors.slice(0, maxContributors)"
+                        :key="contributor.name"
+                        :src="contributor.image_url"
+                        :alt="contributor.name"
+                        :title="contributor.name"
+                        class="avatar"
+                    />
                     <span v-if="project.contributors.length > maxContributors" class="more-count">
                         +{{ project.contributors.length - maxContributors }}
                     </span>
@@ -112,7 +118,8 @@ function visitWebsite(url) {
     padding: 1.5rem;
 }
 
-.project-title {
+h3 {
+    text-align: start;
     color: #fff;
     font-size: 1.25rem;
     font-weight: 700;
@@ -131,7 +138,7 @@ function visitWebsite(url) {
     align-items: center;
 }
 
-.avatar {
+.card-footer img {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -155,24 +162,8 @@ function visitWebsite(url) {
     margin-left: 8px;
 }
 
-.visit-btn {
+.button {
     background: v-bind(bgColor);
     color: v-bind(textColor);
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-}
-
-.project-card:hover .visit-btn {
-    transform: translateY(0);
-}
-
-.visit-btn:hover {
-    background: v-bind(bgColor);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 </style>
