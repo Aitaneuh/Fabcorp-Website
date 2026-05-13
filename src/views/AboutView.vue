@@ -1,46 +1,65 @@
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const devCount = ref(0)
+
+onMounted(async () => {
+    try {
+        const res = await fetch('https://api.fabcorp.ch/webhook/contributors')
+        const data = await res.json()
+
+        if (Array.isArray(data)) {
+            devCount.value = data.length
+        }
+    } catch (error) {
+        console.error('Failed to fetch developer count:', error)
+    }
+})
+</script>
+
 <template>
     <header class="hero">
         <img src="/images/fabcorp_logo_small_white.png" alt="Fabcorp Logo" />
-        <h1>Elevating Code to <span class="accent">Art</span></h1>
+        <h1>Because coding is <span class="accent">Fun</span></h1>
         <p>
-            Fabcorp is a boutique technical collective specializing in high-performance digital
-            solutions. When dedication meets talent, we build the future.
+            Fabcorp is a fictive company made by {{ devCount }} students so they can build things
+            together under a team name.
         </p>
     </header>
 
     <section class="about-grid">
         <div class="grid-item main">
-            <h2 class="accent">Our Mission</h2>
+            <h2 class="accent">Our Goal</h2>
             <p>
-                Founded on the principle of technical excellence, Fabcorp bridges the gap between
-                complex engineering and intuitive user experience. We don't just write scripts; we
-                architect systems that scale.
+                As a student project, Fabcorp aims to do various projects using a huge set of
+                different technos to gather as much experience as possible and to learn a complete
+                palette of skills.
             </p>
         </div>
 
         <div class="grid-item">
-            <h3 class="accent">Precision</h3>
-            <p>Every line of code is written with intent and optimized for speed.</p>
+            <h3 class="accent">Productivity</h3>
+            <p>We try to code a bit everyday to have a kind of stable rythm.</p>
         </div>
 
         <div class="grid-item">
             <h3 class="accent">Innovation</h3>
-            <p>Staying ahead of the stack to provide modern solutions to modern problems.</p>
+            <p>There is no innovation here but at least we have a great time coding.</p>
         </div>
     </section>
 
     <section class="banner">
         <div>
             <div class="stat">
-                <span class="stat-number accent">2</span>
-                <span class="stat-label">Core Developers</span>
+                <span class="stat-number accent">{{ devCount }}</span>
+                <span class="stat-label">Student Developers</span>
             </div>
             <div class="stat">
-                <span class="stat-number accent">100%</span>
-                <span class="stat-label">Commitment</span>
+                <span class="stat-number accent">+200%</span>
+                <span class="stat-label">Learning Curve</span>
             </div>
             <div class="stat">
-                <span class="stat-number accent">∞</span>
+                <span class="stat-number accent">enough</span>
                 <span class="stat-label">Passion</span>
             </div>
         </div>
@@ -48,10 +67,7 @@
 
     <section class="hero">
         <h2>Curious about who is behind the screen?</h2>
-        <router-link to="/team" class="button background-accent">
-            <!-- <button class="background-accent" @click="redirect">Meet the Team</button> -->
-            Meet the team
-        </router-link>
+        <router-link to="/team" class="button background-accent"> Meet the team </router-link>
     </section>
 </template>
 
@@ -134,6 +150,10 @@ header p {
 
 .button {
     color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
 }
 
 .button:hover {
@@ -153,7 +173,7 @@ header p {
         font-size: 2.5rem;
     }
 
-    .banner-content {
+    .banner > div {
         flex-direction: column;
         gap: 40px;
     }
